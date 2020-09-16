@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2017 at 07:18 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Generation Time: Sep 16, 2020 at 04:50 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mlm`
+-- Database: `mlm1`
 --
 
 -- --------------------------------------------------------
@@ -47,10 +48,10 @@ INSERT INTO `admin` (`id`, `userid`, `password`) VALUES
 
 CREATE TABLE `income` (
   `id` int(11) NOT NULL,
-  `userid` varchar(50) NOT NULL,
-  `day_bal` int(11) NOT NULL,
-  `current_bal` int(11) NOT NULL,
-  `total_bal` int(11) NOT NULL
+  `userid` varchar(50) DEFAULT NULL,
+  `day_bal` int(11) DEFAULT 0,
+  `current_bal` int(11) DEFAULT 0,
+  `total_bal` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -58,11 +59,30 @@ CREATE TABLE `income` (
 --
 
 INSERT INTO `income` (`id`, `userid`, `day_bal`, `current_bal`, `total_bal`) VALUES
-(1, 'user@tutorialvilla.com', 200, 200, 200),
-(6, 'user1@gmail.com', 0, 0, 0),
-(7, 'user2@gmail.com', 0, 0, 0),
-(8, 'user3@gmail.com', 0, 0, 0),
-(9, 'user4@gmail.com', 0, 0, 0);
+(1, 'mahimlm@website.com', 100, 0, 100),
+(2, 'mahimlm@website.com', 100, 0, 100),
+(3, 'himanish@website.com', 0, 0, 0),
+(4, 'kavita@website.com', 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `income_received`
+--
+
+CREATE TABLE `income_received` (
+  `id` int(11) NOT NULL,
+  `userid` varchar(100) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `income_received`
+--
+
+INSERT INTO `income_received` (`id`, `userid`, `amount`, `date`) VALUES
+(1, 'mahimlm@website.com', 100, '2020-09-16');
 
 -- --------------------------------------------------------
 
@@ -82,15 +102,10 @@ CREATE TABLE `pin_list` (
 --
 
 INSERT INTO `pin_list` (`id`, `userid`, `pin`, `status`) VALUES
-(1, 'user@tutorialvilla.com', 723913, 'close'),
-(2, 'user@tutorialvilla.com', 551895, 'open'),
-(3, 'user@tutorialvilla.com', 237823, 'open'),
-(4, 'user@tutorialvilla.com', 921200, 'open'),
-(5, 'user@tutorialvilla.com', 582739, 'open'),
-(6, 'user@tutorialvilla.com', 295144, 'open'),
-(7, 'user1@gmail.com', 658270, 'open'),
-(8, 'user1@gmail.com', 231149, 'open'),
-(9, 'user1@gmail.com', 123400, 'open');
+(1, 'mahimlm@website.com', 632665, 'close'),
+(2, 'mahimlm@website.com', 212544, 'close'),
+(3, 'mahimlm@website.com', 689173, 'open'),
+(4, 'mahimlm@website.com', 825977, 'open');
 
 -- --------------------------------------------------------
 
@@ -111,12 +126,7 @@ CREATE TABLE `pin_request` (
 --
 
 INSERT INTO `pin_request` (`id`, `email`, `amount`, `date`, `status`) VALUES
-(2, 'user@tutorialvilla.com', 1200, '2016-11-22', 'close'),
-(3, 'user@tutorialvilla.com', 1800, '2016-11-22', 'close'),
-(4, 'user@tutorialvilla.com', 2100, '2016-12-31', 'close'),
-(5, 'user@tutorialvilla.com', 3000, '2017-02-06', 'close'),
-(6, 'user@tutorialvilla.com', 2000, '2017-02-09', 'close'),
-(7, 'user1@gmail.com', 1000, '2017-02-09', 'close');
+(1, 'mahimlm@website.com', 1200, '2020-09-16', 'close');
 
 -- --------------------------------------------------------
 
@@ -126,11 +136,11 @@ INSERT INTO `pin_request` (`id`, `email`, `amount`, `date`, `status`) VALUES
 
 CREATE TABLE `tree` (
   `id` int(11) NOT NULL,
-  `userid` varchar(50) NOT NULL,
-  `left` varchar(50) NOT NULL,
-  `right` varchar(50) NOT NULL,
-  `leftcount` int(11) NOT NULL,
-  `rightcount` int(11) NOT NULL
+  `userid` varchar(50) DEFAULT NULL,
+  `left` varchar(50) DEFAULT NULL,
+  `right` varchar(50) DEFAULT NULL,
+  `leftcount` int(11) DEFAULT 0,
+  `rightcount` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -138,11 +148,9 @@ CREATE TABLE `tree` (
 --
 
 INSERT INTO `tree` (`id`, `userid`, `left`, `right`, `leftcount`, `rightcount`) VALUES
-(1, 'user@tutorialvilla.com', 'user1@gmail.com', 'user2@gmail.com', 2, 2),
-(6, 'user1@gmail.com', 'user3@gmail.com', '', 1, 0),
-(7, 'user2@gmail.com', 'user4@gmail.com', '', 1, 0),
-(8, 'user3@gmail.com', '', '', 0, 0),
-(9, 'user4@gmail.com', '', '', 0, 0);
+(1, 'mahimlm@website.com', 'himanish@website.com', 'kavita@website.com', 1, 1),
+(2, 'himanish@website.com', NULL, NULL, 0, 0),
+(3, 'kavita@website.com', NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -152,7 +160,7 @@ INSERT INTO `tree` (`id`, `userid`, `left`, `right`, `leftcount`, `rightcount`) 
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `password` varchar(30) NOT NULL,
   `mobile` varchar(12) NOT NULL,
   `address` text NOT NULL,
@@ -166,11 +174,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `mobile`, `address`, `account`, `under_userid`, `side`) VALUES
-(1, 'user@tutorialvilla.com', '123456', '9897883700', 'Gurgaon', '98978789789', '', 'left'),
-(6, 'user1@gmail.com', '123456', '98900809', 'Gurgaon', '08098098', 'user@tutorialvilla.com', 'left'),
-(7, 'user2@gmail.com', '123456', '78897890', 'Gurgaon', '890989', 'user@tutorialvilla.com', 'right'),
-(8, 'user3@gmail.com', '123456', '80989', 'Gurgaon', 'ou89u89089', 'user1@gmail.com', 'left'),
-(9, 'user4@gmail.com', '123456', '97897', 'jkljlj', '089098', 'user2@gmail.com', 'left');
+(1, 'mahimlm@website.com', '12345678', '8199828075', 'rador', '45678', '', ''),
+(2, 'himanish@website.com', '12345678', '2345678', 'fgh', '45678', 'mahimlm@website.com', 'left'),
+(3, 'kavita@website.com', '12345678', '3456', '45678', '4567', 'mahimlm@website.com', 'right');
 
 --
 -- Indexes for dumped tables
@@ -186,6 +192,12 @@ ALTER TABLE `admin`
 -- Indexes for table `income`
 --
 ALTER TABLE `income`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `income_received`
+--
+ALTER TABLE `income_received`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -221,31 +233,44 @@ ALTER TABLE `user`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `income`
 --
 ALTER TABLE `income`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `income_received`
+--
+ALTER TABLE `income_received`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `pin_list`
 --
 ALTER TABLE `pin_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `pin_request`
 --
 ALTER TABLE `pin_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tree`
 --
 ALTER TABLE `tree`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
