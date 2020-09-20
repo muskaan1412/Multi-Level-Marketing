@@ -1,7 +1,7 @@
 <?php
 include('php-includes/check-login.php');
 include('php-includes/connect.php');
-$product_amount = 300;
+//$product_amount = 300;
 ?>
 <?php
 //Clicked on send buton
@@ -10,7 +10,8 @@ if(isset($_POST['send'])){
 	$amount = mysqli_real_escape_string($con,$_POST['amount']);
 	$id = mysqli_real_escape_string($con,$_POST['id']);
 	
-	$no_of_pin = $amount/$product_amount;
+    //$no_of_pin = $amount/$product_amount;
+    $no_of_pin = 1;
 	//Insert pin
 	$i=1;
 	while($i<=$no_of_pin){
@@ -20,7 +21,7 @@ if(isset($_POST['send'])){
 	}
 	
 	//updae pin request status
-	mysqli_query($con,"update pin_request set status='close' where id='$id' limit 5");
+	mysqli_query($con,"update pin_request set status='close' where id='$id' limit 10");
 	
 	echo '<script>alert("Pin send successfully.");window.location.assign("view-pin-request.php");</script>';	
 }

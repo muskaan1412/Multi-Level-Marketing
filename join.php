@@ -78,7 +78,7 @@ if(isset($_GET['join_user'])){
 		echo mysqli_error($con);
 		//This is the main part to join a user\
 		//If you will do any mistake here. Then the site will not work.
-		
+
 		//Update count and Income.
 		$temp_under_userid = $under_userid;
 		$temp_side_count = $side.'count'; //leftcount or rightcount
@@ -165,6 +165,7 @@ if(isset($_GET['join_user'])){
 		
 		echo '<script>alert("Testing success.");</script>';
 	}
+	
 	
 }
 ?><!--/join user-->
@@ -318,8 +319,20 @@ function getUnderIdPlace($userid){
                             </div>
                             <div class="form-group">
                                 <label>Side</label><br>
+								<!--before change
                                 <input type="radio" name="side" value="left"> Left
                                 <input type="radio" name="side" value="right"> Right
+								-->
+								<input type="radio" name="side" value="first"> User1
+                                <input type="radio" name="side" value="second"> User2
+								<input type="radio" name="side" value="third"> User3
+                                <input type="radio" name="side" value="fourth"> User4
+								<input type="radio" name="side" value="fifth"> User5
+                                <input type="radio" name="side" value="sixth"> User6
+								<input type="radio" name="side" value="seventh"> User7
+                                <input type="radio" name="side" value="eighth"> User8
+								<input type="radio" name="side" value="ninth"> User9
+                                <input type="radio" name="side" value="tenth"> User10
                             </div>
                             
                             <div class="form-group">
