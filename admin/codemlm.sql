@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2020 at 04:50 PM
+-- Generation Time: Sep 27, 2020 at 02:12 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mlm1`
+-- Database: `codemlm`
 --
 
 -- --------------------------------------------------------
@@ -49,8 +49,7 @@ INSERT INTO `admin` (`id`, `userid`, `password`) VALUES
 CREATE TABLE `income` (
   `id` int(11) NOT NULL,
   `userid` varchar(50) DEFAULT NULL,
-  `day_bal` int(11) DEFAULT 0,
-  `current_bal` int(11) DEFAULT 0,
+  `current_bal` int(11) NOT NULL,
   `total_bal` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -58,11 +57,10 @@ CREATE TABLE `income` (
 -- Dumping data for table `income`
 --
 
-INSERT INTO `income` (`id`, `userid`, `day_bal`, `current_bal`, `total_bal`) VALUES
-(1, 'mahimlm@website.com', 100, 0, 100),
-(2, 'mahimlm@website.com', 100, 0, 100),
-(3, 'himanish@website.com', 0, 0, 0),
-(4, 'kavita@website.com', 0, 0, 0);
+INSERT INTO `income` (`id`, `userid`, `current_bal`, `total_bal`) VALUES
+(1, 'topuser@website.com', 0, 950),
+(2, '1-1@web.com', 0, 50),
+(3, '2-1@web.com', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -82,7 +80,7 @@ CREATE TABLE `income_received` (
 --
 
 INSERT INTO `income_received` (`id`, `userid`, `amount`, `date`) VALUES
-(1, 'mahimlm@website.com', 100, '2020-09-16');
+(1, '1-1@web.com', 50, '2020-09-27');
 
 -- --------------------------------------------------------
 
@@ -102,10 +100,8 @@ CREATE TABLE `pin_list` (
 --
 
 INSERT INTO `pin_list` (`id`, `userid`, `pin`, `status`) VALUES
-(1, 'mahimlm@website.com', 632665, 'close'),
-(2, 'mahimlm@website.com', 212544, 'close'),
-(3, 'mahimlm@website.com', 689173, 'open'),
-(4, 'mahimlm@website.com', 825977, 'open');
+(1, 'topuser@website.com', 714633, 'close'),
+(2, 'topuser@website.com', 980684, 'close');
 
 -- --------------------------------------------------------
 
@@ -116,7 +112,6 @@ INSERT INTO `pin_list` (`id`, `userid`, `pin`, `status`) VALUES
 CREATE TABLE `pin_request` (
   `id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `amount` int(11) NOT NULL,
   `date` date NOT NULL,
   `status` enum('open','close') NOT NULL DEFAULT 'open'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -125,8 +120,9 @@ CREATE TABLE `pin_request` (
 -- Dumping data for table `pin_request`
 --
 
-INSERT INTO `pin_request` (`id`, `email`, `amount`, `date`, `status`) VALUES
-(1, 'mahimlm@website.com', 1200, '2020-09-16', 'close');
+INSERT INTO `pin_request` (`id`, `email`, `date`, `status`) VALUES
+(1, 'topuser@website.com', '2020-09-27', 'close'),
+(2, 'topuser@website.com', '2020-09-27', 'close');
 
 -- --------------------------------------------------------
 
@@ -137,20 +133,26 @@ INSERT INTO `pin_request` (`id`, `email`, `amount`, `date`, `status`) VALUES
 CREATE TABLE `tree` (
   `id` int(11) NOT NULL,
   `userid` varchar(50) DEFAULT NULL,
-  `left` varchar(50) DEFAULT NULL,
-  `right` varchar(50) DEFAULT NULL,
-  `leftcount` int(11) DEFAULT 0,
-  `rightcount` int(11) DEFAULT 0
+  `first` varchar(50) NOT NULL,
+  `second` varchar(50) NOT NULL,
+  `third` varchar(50) NOT NULL,
+  `fourth` varchar(50) NOT NULL,
+  `fifth` varchar(50) NOT NULL,
+  `sixth` varchar(50) NOT NULL,
+  `seventh` varchar(50) NOT NULL,
+  `eighth` varchar(50) NOT NULL,
+  `ninth` varchar(50) NOT NULL,
+  `tenth` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tree`
 --
 
-INSERT INTO `tree` (`id`, `userid`, `left`, `right`, `leftcount`, `rightcount`) VALUES
-(1, 'mahimlm@website.com', 'himanish@website.com', 'kavita@website.com', 1, 1),
-(2, 'himanish@website.com', NULL, NULL, 0, 0),
-(3, 'kavita@website.com', NULL, NULL, 0, 0);
+INSERT INTO `tree` (`id`, `userid`, `first`, `second`, `third`, `fourth`, `fifth`, `sixth`, `seventh`, `eighth`, `ninth`, `tenth`) VALUES
+(1, 'topuser@website.com', '1-1@web.com', '', '', '', '', '', '', '', '', ''),
+(2, '1-1@web.com', '2-1@web.com', '', '', '', '', '', '', '', '', ''),
+(3, '2-1@web.com', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -166,17 +168,18 @@ CREATE TABLE `user` (
   `address` text NOT NULL,
   `account` varchar(20) NOT NULL,
   `under_userid` varchar(50) NOT NULL,
-  `side` enum('left','right') NOT NULL
+  `amount` int(11) NOT NULL,
+  `side` enum('first','second','third','fourth','fifth','sixth','seventh','eighth','ninth','tenth') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `password`, `mobile`, `address`, `account`, `under_userid`, `side`) VALUES
-(1, 'mahimlm@website.com', '12345678', '8199828075', 'rador', '45678', '', ''),
-(2, 'himanish@website.com', '12345678', '2345678', 'fgh', '45678', 'mahimlm@website.com', 'left'),
-(3, 'kavita@website.com', '12345678', '3456', '45678', '4567', 'mahimlm@website.com', 'right');
+INSERT INTO `user` (`id`, `email`, `password`, `mobile`, `address`, `account`, `under_userid`, `amount`, `side`) VALUES
+(1, 'topuser@website.com', '12345678', '8199828075', 'YNR', '12345678', '', 950, ''),
+(2, '1-1@web.com', '12345678', '95', '95', '95', 'topuser@website.com', 50, 'first'),
+(3, '2-1@web.com', '12345678', '34', 'f', '324', '1-1@web.com', 0, 'first');
 
 --
 -- Indexes for dumped tables
@@ -238,7 +241,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `income`
 --
 ALTER TABLE `income`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `income_received`
@@ -250,13 +253,13 @@ ALTER TABLE `income_received`
 -- AUTO_INCREMENT for table `pin_list`
 --
 ALTER TABLE `pin_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pin_request`
 --
 ALTER TABLE `pin_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tree`

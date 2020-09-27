@@ -55,7 +55,7 @@ $userid = $_SESSION['userid'];
                     	<br><br>
                     	<table class="table table-bordered table-striped">
                         	<tr>
-                            	<th>S.n.</th>
+                            	<th>S.No.</th>
                                 <th>Amount</th>
                                 <th>Date</th>
                             </tr>
@@ -79,7 +79,7 @@ $userid = $_SESSION['userid'];
 							else{
 							?>
                             	<tr>
-                                	<td colspan="4">You did'nt received any payment yet.</td>
+                                	<td colspan="4">You didn't received any payment yet.</td>
                                 </tr>
                             <?php
 							}

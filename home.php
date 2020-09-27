@@ -54,6 +54,7 @@ $userid = $_SESSION['userid'];
 						$query = mysqli_query($con,"select * from income where userid='$userid'");
 						$result = mysqli_fetch_array($query);
 					?>
+                     <!--
                 	<div class="col-lg-3">
                     	<div class="panel panel-info">
                         	<div class="panel-heading">
@@ -61,23 +62,27 @@ $userid = $_SESSION['userid'];
                             </div>
                             <div class="panel-body">
                             	<?php 
-								echo $result['day_bal']
+								//echo $result['day_bal']
 								?>
                             </div>
                         </div>
                     </div>
+                     -->
                     <div class="col-lg-3">
                     	<div class="panel panel-success">
                         	<div class="panel-heading">
-                            	<h4 class="panel-title">Current Income</h4>
+                            	<h4 class="panel-title">Admin Dues </h4>
                             </div>
                             <div class="panel-body">
-                            	<?php 
-								echo $result['current_bal']
+                            <?php 
+							        $q = mysqli_query($con,"select * from income where userid='$userid'");
+                                    $r = mysqli_fetch_array($q);
+                                    echo $r['current_bal'];
 								?>
                             </div>
                         </div>
                     </div>
+                  
                     <div class="col-lg-3">
                     	<div class="panel panel-danger">
                         	<div class="panel-heading">
@@ -85,7 +90,9 @@ $userid = $_SESSION['userid'];
                             </div>
                             <div class="panel-body">
                             	<?php 
-								echo $result['total_bal']
+							        $q = mysqli_query($con,"select * from income where userid='$userid'");
+                                    $r = mysqli_fetch_array($q);
+                                    echo $r['total_bal'];
 								?>
                             </div>
                         </div>

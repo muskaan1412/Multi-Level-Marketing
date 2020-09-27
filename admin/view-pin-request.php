@@ -7,7 +7,7 @@ include('php-includes/connect.php');
 //Clicked on send buton
 if(isset($_POST['send'])){
 	$userid = mysqli_real_escape_string($con,$_POST['userid']);
-	$amount = mysqli_real_escape_string($con,$_POST['amount']);
+	//$amount = mysqli_real_escape_string($con,$_POST['amount']);
 	$id = mysqli_real_escape_string($con,$_POST['id']);
 	
     //$no_of_pin = $amount/$product_amount;
@@ -92,9 +92,9 @@ function pin_generate(){
                     	<div class="table-responsive">
                         	<table class="table table-striped table-bordered">
                             	<tr>
-                                	<th>S.n.</th>
+                                	<th>S.No.</th>
                                     <th>Userid</th>
-                                    <th>Amount</th>
+                                    <!--<th>Amount</th>-->
                                     <th>Date</th>
                                     <th>Send</th>
                                     <th>Cancel</th>
@@ -106,17 +106,17 @@ function pin_generate(){
 										while($row=mysqli_fetch_array($query)){
 											$id = $row['id'];
 											$email = $row['email'];
-											$amount = $row['amount'];
+										//	$amount = $row['amount'];
 											$date = $row['date'];
 										?>
                                         	<tr>
                                             	<td><?php echo $i; ?></td>
                                                 <td><?php echo $email; ?></td>
-                                                <td><?php echo $amount; ?></td>
+                                               <!-- <td><?php echo $amount; ?></td>-->
                                                 <td><?php echo $date; ?></td>
                                                 <form method="post">
                                                 	<input type="hidden" name="userid" value="<?php echo $email ?>">
-                                                    <input type="hidden" name="amount" value="<?php echo $amount ?>">
+                                                   <!-- <input type="hidden" name="amount" value="<?php// echo $amount ?>">-->
                                                     <input type="hidden" name="id" value="<?php echo $id ?>">
                                                 	<td><input type="submit" name="send" value="Send" class="btn btn-primary"></td>
                                                 </form>

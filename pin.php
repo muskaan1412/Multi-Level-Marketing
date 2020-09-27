@@ -54,7 +54,7 @@ $userid = $_SESSION['userid'];
                     	<div class="table-responsive">
                         	<table class="table table-bordered table-striped">
                             	<tr>
-                                	<th>S.n.</th>
+                                	<th>S.No.</th>
                                     <th>Pin</th>
                                 </tr>
                                 <?php

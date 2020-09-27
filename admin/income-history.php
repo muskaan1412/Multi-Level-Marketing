@@ -55,7 +55,7 @@ require('php-includes/connect.php');
                         	<table class="table table-bordered table-striped">
                             	<thead>
                                 	<tr>
-                                    	<th>S.N.</th>
+                                    	<th>S.No.</th>
                                         <th>Userid</th>
                                         <th>Amount</th>
                                         <th>Date</th>

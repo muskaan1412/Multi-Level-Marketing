@@ -6,13 +6,13 @@ $email = $_SESSION['userid'];
 <?php
 //pin request 
 if(isset($_GET['pin_request'])){
-	$amount = mysqli_real_escape_string($con,$_GET['amount']);
+	//$amount = mysqli_real_escape_string($con,$_GET['amount']);
 	$date = date("y-m-d");
 	
 	
-	if($amount!=''){
+	if($email!=''){
 		//Inset the value to pin request
-		$query = mysqli_query($con,"insert into pin_request(`email`,`amount`,`date`) values('$email','$amount','$date')");
+		$query = mysqli_query($con,"insert into pin_request(`email`,`date`) values('$email','$date')");
 		if($query){
 			echo '<script>alert("Pin request sent successfully");window.location.assign("pin-request.php");</script>';
 		}
@@ -76,10 +76,10 @@ if(isset($_GET['pin_request'])){
                 <div class="row">
                 	<div class="col-lg-4">
                     	<form method="get">	
-                        	<div class="form-group">
+                        	<!--<div class="form-group">
                             	<label>Amount</label>
                                 <input type="text" name="amount" class="form-control" required>
-                            </div>
+                            </div>-->
                             <div class="form-group">
                             	<input type="submit" name="pin_request" class="btn btn-primary" value="Pin Request">
                             </div>
@@ -91,8 +91,8 @@ if(isset($_GET['pin_request'])){
                     	<br><br>
                     	<table class="table table-bordered table-striped">
                         	<tr>
-                            	<th>S.n.</th>
-                                <th>Amount</th>
+                            	<th>S.No.</th>
+                                <!--<th>Amount</th>-->
                                 <th>Date</th>
                                 <th>Status</th>
                             </tr>
@@ -101,13 +101,13 @@ if(isset($_GET['pin_request'])){
 							$query = mysqli_query($con,"select * from pin_request where email='$email' order by id desc");
 							if(mysqli_num_rows($query)>0){
 								while($row=mysqli_fetch_array($query)){
-									$amount = $row['amount'];
+									//$amount = $row['amount'];
 									$date = $row['date'];
 									$status = $row['status'];
 								?>
                                 	<tr>
                                     	<td><?php echo $i; ?></td>
-                                        <td><?php echo $amount; ?></td>
+                                       <!-- <td><?php //echo $amount; ?></td>-->
                                         <td><?php echo $date; ?></td>
                                         <td><?php echo $status; ?></td>
                                     </tr>

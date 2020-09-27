@@ -7,15 +7,36 @@ if(isset($_GET['userid'])){
 	$userid = mysqli_real_escape_string($con,$_GET['userid']);
 	$amount = mysqli_real_escape_string($con,$_GET['amount']);
 	
-	$date = date("Y-m-d");
+    $date = date("Y-m-d");
+
+    $income_query = mysqli_query($con,"select * from income where userid='$userid'");
+    $income_array=mysqli_fetch_array($income_query);
+
+    $user_query = mysqli_query($con,"select * from user where under_userid=''");
+    $user_array = mysqli_fetch_array($user_query);
+
+    $income_received = $income_array['current_bal'];
+    $admin_amount = $user_array['amount']-$income_array['current_bal'];
+    $user_amount = $income_array['total_bal']+$income_array['current_bal'];
+    $admin_id = $user_array['email'];
+
+	$query = mysqli_query($con,"update income set total_bal='$admin_amount' where userid='$admin_id'");
+
+	$query = mysqli_query($con,"update income set total_bal='$user_amount' where userid='$userid'");
 	
-	$query = mysqli_query($con,"insert into income_received(`userid`, `amount`, `date`) value('$userid', '$amount', '$date')");
+	$query = mysqli_query($con,"insert into income_received(`userid`, `amount`, `date`) value('$userid', '$income_received', '$date')");
 	
-	$query = mysqli_query($con,"update income set current_bal=0 where userid='$userid'");
+    $query = mysqli_query($con,"update income set current_bal=0 where userid='$userid'");
+    
+    $query = mysqli_query($con, "update user set amount='$user_amount' where email='$userid'");
+
+	$query = mysqli_query($con,"update user set amount='$admin_amount' where email='$admin_id'");
+
 	
 	echo '<script>alert("Payment has paid");window.location.assign("income.php");</script>';
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +89,7 @@ if(isset($_GET['userid'])){
                         	<table class="table table-bordered table-striped">
                             	<thead>
                                 	<tr>
-                                    	<th>S.N.</th>
+                                    	<th>S.No.</th>
                                         <th>Userid</th>
                                         <th>Amount</th>
                                         <th>Account</th>
@@ -77,12 +98,12 @@ if(isset($_GET['userid'])){
                                 </thead>
                                 <tbody>
 								<?php
-                                	$query = mysqli_query($con,"select * from income where current_bal>=100");
+                                	$query = mysqli_query($con,"select * from income where current_bal>0");
 									if(mysqli_num_rows($query)>0){
 										$i=1;
 										while($row=mysqli_fetch_array($query)){
 											$userid = $row['userid'];
-											$amount = $row['current_bal'];
+											$amount = $row['total_bal'];
 											
 											$query_user = mysqli_query($con,"select * from user where email='$userid'");
 											$result = mysqli_fetch_array($query_user);
@@ -91,7 +112,7 @@ if(isset($_GET['userid'])){
                                         	<tr>
                                             	<td><?php echo $i; ?></td>
                                                 <td><?php echo $userid; ?></td>
-                                                <td><?php echo $amount; ?></td>
+                                                <td><?php echo $row['current_bal']; ?></td>
                                                 <td><?php echo $account; ?></td>
                                                 <td><a href="income.php?<?php echo 'userid='.$userid.'&amount='.$amount ?>">Send</a></td>
                                             </tr>

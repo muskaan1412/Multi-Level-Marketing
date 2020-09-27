@@ -1,6 +1,7 @@
 <?php
 include('php-includes/check-login.php');
 require('php-includes/connect.php');
+$userid = $_SESSION['userid'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,6 +86,7 @@ require('php-includes/connect.php');
                             </div>
                         </div>
                     </div>
+                   
                     <div class="col-lg-3">
                     	<div class="panel panel-danger">
                         	<div class="panel-heading">
@@ -92,7 +94,21 @@ require('php-includes/connect.php');
                             </div>
                             <div class="panel-body">
                             	<?php 
-								echo  mysqli_num_rows(mysqli_query($con,"select * from income_received"));
+                                echo  mysqli_num_rows(mysqli_query($con,"select * from income_received"));
+								?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                    	<div class="panel panel-danger">
+                        	<div class="panel-heading">
+                            	<h4 class="panel-title">Total Income</h4>
+                            </div>
+                            <div class="panel-body">
+                            	<?php 
+							        $q = mysqli_query($con,"select * from user");
+                                    $r = mysqli_fetch_array($q);
+                                    echo $r['amount'];
 								?>
                             </div>
                         </div>
@@ -102,7 +118,8 @@ require('php-includes/connect.php');
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
-
+        
+  
     </div>
     <!-- /#wrapper -->
 

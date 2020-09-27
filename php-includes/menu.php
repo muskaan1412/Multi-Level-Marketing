@@ -42,16 +42,16 @@
                             <a href="pin-request.php"><i class="fa fa-adjust fa-fw"></i> Pin Request</a>
                         </li>
                         <li>
-                            <a href="pin.php"><i class="fa fa-adjust fa-fw"></i>View Pin</a>
+                            <a href="pin.php"><i class="fa fa-adjust fa-fw"></i> View Pin</a>
                         </li>
                         <li>
-                            <a href="join.php"><i class="fa fa-adjust fa-fw"></i>Join User</a>
+                            <a href="join.php"><i class="fa fa-adjust fa-fw"></i> Join User</a>
                         </li>
                         <li>
-                            <a href="tree.php"><i class="fa fa-adjust fa-hub"></i>Tree</a>
+                            <a href="tree.php"><i class="fa fa-adjust fa-hub"></i> Tree</a>
                         </li>
 						<li>
-                            <a href="payment-received-history.php"><i class="fa fa-adjust fa-hub"></i>Payment Received History</a>
+                            <a href="payment-received-history.php"><i class="fa fa-adjust fa-hub"></i> Payment Received History</a>
                         </li>
 
                     </ul>

@@ -15,11 +15,12 @@ if(isset($_GET['join_user'])){
 	$account = mysqli_real_escape_string($con,$_GET['account']);
 	$under_userid = mysqli_real_escape_string($con,$_GET['under_userid']);
 	$side = mysqli_real_escape_string($con,$_GET['side']);
+	$amount = mysqli_real_escape_string($con,$_GET['amount']);
 	$password = "12345678";
-	
+	  
 	$flag = 0;
 	
-	if($pin!='' && $email!='' && $mobile!='' && $address!='' && $account!='' && $under_userid!='' && $side!=''){
+	if($pin!='' && $email!='' && $mobile!='' && $address!='' && $account!='' && $under_userid!='' && $side!='' && $amount!=''){
 		//User filled all the fields.
 		if(pin_check($pin)){
 			//Pin is ok
@@ -61,7 +62,7 @@ if(isset($_GET['join_user'])){
 	if($flag==1){
 		
 		//Insert into User profile
-		$query = mysqli_query($con,"insert into user(`email`,`password`,`mobile`,`address`,`account`,`under_userid`,`side`) values('$email','$password','$mobile','$address','$account','$under_userid','$side')");
+		$query = mysqli_query($con,"insert into user(`email`,`password`,`mobile`,`address`,`account`,`under_userid`,`amount`,`side`) values('$email','$password','$mobile','$address','$account','$under_userid','$amount','$side')");
 		
 		//Insert into Tree
 		//So that later on we can view tree.
@@ -81,9 +82,74 @@ if(isset($_GET['join_user'])){
 
 		//Update count and Income.
 		$temp_under_userid = $under_userid;
-		$temp_side_count = $side.'count'; //leftcount or rightcount
+		$temp_amount = $amount; 
+		$admin_amount = $amount;
+		$query = mysqli_query($con,"update user set amount='0' where email= '$email' ");
+		$count = 1;
 		
-		$temp_side = $side;
+		while($temp_under_userid!=""){
+			$q = mysqli_query($con,"select * from user where email='$temp_under_userid'");
+			$r = mysqli_fetch_array($q);
+			$amount = $r['amount'];
+			$parent = $r['under_userid'];
+			$income_value = mysqli_query($con,"select * from income where userid='$temp_under_userid'");
+			$income_object = mysqli_fetch_array($income_value);
+			$current_bal = $income_object['current_bal'];
+			if($parent == ""){
+				$current_user_income=($admin_amount)+$amount;
+				$query = mysqli_query($con,"update user set amount='$current_user_income' where email= '$temp_under_userid' ");
+				// $query = mysqli_query($con,"update income set total_bal='$current_user_income' where userid= '$temp_under_userid' ");
+				$query = mysqli_query($con,"update income set total_bal='$current_user_income' where userid= '$temp_under_userid' ");
+
+			}
+			elseif($count == 1){
+				// $admin_amount = $admin_amount-((1/10)*($temp_amount));
+				$current_user_income=(1/10)*($temp_amount)+$current_bal;
+				// $query = mysqli_query($con,"update user set amount='$current_user_income' where email= '$temp_under_userid' ");
+				$query = mysqli_query($con,"update income set current_bal='$current_user_income' where userid= '$temp_under_userid' ");
+				$count += 1;
+			}
+			else{
+				// $admin_amount = $admin_amount-((1/20)*($temp_amount));
+				$current_user_income=(1/20)*($temp_amount)+$current_bal;
+				// $query = mysqli_query($con,"update user set amount='$current_user_income' where email= '$temp_under_userid' ");
+				$query = mysqli_query($con,"update income set current_bal='$current_user_income' where userid= '$temp_under_userid' ");
+			}
+			$q = mysqli_query($con,"select * from user where email='$temp_under_userid'");
+			$r = mysqli_fetch_array($q);
+			$temp_under_userid = $r['under_userid'];
+			//mysqli_query($con,"update tree set `$temp_side_count`=$current_temp_side_count where userid='$temp_under_userid'");
+		}
+
+		// while($temp_under_userid!=""){
+		// 	$q = mysqli_query($con,"select * from user where email='$temp_under_userid'");
+		// 	$r = mysqli_fetch_array($q);
+		// 	$amount = $r['amount'];
+		// 	$parent = $r['under_userid'];
+		// 	if($parent == ""){
+		// 		$current_user_income=($admin_amount)+$amount;
+		// 		$query = mysqli_query($con,"update user set amount='$current_user_income' where email= '$temp_under_userid' ");
+		// 		$query = mysqli_query($con,"update income set total_bal='$current_user_income' where userid= '$temp_under_userid' ");
+		// 	}
+		// 	elseif($count == 1){
+		// 		$admin_amount = $admin_amount-((1/10)*($temp_amount));
+		// 		$current_user_income=(1/10)*($temp_amount)+$amount;
+		// 		$query = mysqli_query($con,"update user set amount='$current_user_income' where email= '$temp_under_userid' ");
+		// 		$query = mysqli_query($con,"update income set total_bal='$current_user_income' where userid= '$temp_under_userid' ");
+		// 		$count += 1;
+		// 	}
+		// 	else{
+		// 		$admin_amount = $admin_amount-((1/20)*($temp_amount));
+		// 		$current_user_income=(1/20)*($temp_amount)+$amount;
+		// 		$query = mysqli_query($con,"update user set amount='$current_user_income' where email= '$temp_under_userid' ");
+		// 		$query = mysqli_query($con,"update income set total_bal='$current_user_income' where userid= '$temp_under_userid' ");
+		// 	}
+		// 	$q = mysqli_query($con,"select * from user where email='$temp_under_userid'");
+		// 	$r = mysqli_fetch_array($q);
+		// 	$temp_under_userid = $r['under_userid'];
+		// 	//mysqli_query($con,"update tree set `$temp_side_count`=$current_temp_side_count where userid='$temp_under_userid'");
+		// }
+        /*
 		$total_count=1;
 		$i=1;
 		while($total_count>0){
@@ -159,12 +225,14 @@ if(isset($_GET['join_user'])){
 		}//Loop
 		
 		
-		
+		*/
 		
 		echo mysqli_error($con);
 		
-		echo '<script>alert("Testing success.");</script>';
+		echo $temp_amount;
+		echo $under_userid;
 	}
+	
 	
 	
 }
@@ -317,6 +385,10 @@ function getUnderIdPlace($userid){
                                 <label>Under Userid</label>
                                 <input type="text" name="under_userid" class="form-control" required>
                             </div>
+							<div class="form-group">
+                                <label>Amount</label>
+                                <input type="text" name="amount" class="form-control" required>
+                            </div>
                             <div class="form-group">
                                 <label>Side</label><br>
 								<!--before change
@@ -337,7 +409,7 @@ function getUnderIdPlace($userid){
                             
                             <div class="form-group">
                         	<input type="submit" name="join_user" class="btn btn-primary" value="Join">
-                        </div>
+							</div>
                         </form>
                     </div>
                 </div><!--/.row-->

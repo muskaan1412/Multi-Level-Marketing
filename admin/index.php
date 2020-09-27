@@ -40,7 +40,7 @@
                         <form method="post" action="login.php">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Userid" name="userid" type="text" autofocus>
+                                    <input class="form-control" placeholder="User-Id" name="userid" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
