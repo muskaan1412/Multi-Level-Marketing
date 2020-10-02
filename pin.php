@@ -34,7 +34,7 @@ $userid = $_SESSION['userid'];
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" style="background-color: #002642">
 
         <!-- Navigation -->
         <?php include('php-includes/menu.php'); ?>
@@ -44,7 +44,7 @@ $userid = $_SESSION['userid'];
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Pin</h1>
+                        <h1 class="page-header" style="font-size:45px">Pin</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -52,7 +52,7 @@ $userid = $_SESSION['userid'];
                 <div class="row">
                 	<div class="col-lg-12">
                     	<div class="table-responsive">
-                        	<table class="table table-bordered table-striped">
+                        	<table class="table table-bordered table-striped" style="font-size:20px">
                             	<tr>
                                 	<th>S.No.</th>
                                     <th>Pin</th>

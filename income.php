@@ -34,7 +34,7 @@ $userid = $_SESSION['userid'];
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" style="background-color: #002642">
 
         <!-- Navigation -->
         <?php include('php-includes/menu.php'); ?>
@@ -44,7 +44,7 @@ $userid = $_SESSION['userid'];
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Income</h1>
+                        <h1 class="page-header" style="font-size:45px">Income</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

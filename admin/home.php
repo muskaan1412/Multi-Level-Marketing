@@ -14,7 +14,7 @@ $userid = $_SESSION['userid'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Mlml Website  - Home</title>
+    <title>Mlm Website  - Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@ $userid = $_SESSION['userid'];
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" style="background-color: #002642">
 
         <!-- Navigation -->
         <?php include('php-includes/menu.php'); ?>
@@ -52,10 +52,10 @@ $userid = $_SESSION['userid'];
                 <div class="row">
                 	<div class="col-lg-3">
                     	<div class="panel panel-primary">
-                        	<div class="panel-heading">
-                            	<h4 class="panel-title">Total User</h4>
+                        	<div class="panel-heading" style="color:#fff; background-color:#002642">
+                            	<h4 class="panel-title" style="font-size:30px">Total User</h4>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="font-size: 25px">
                             	<?php 
 								echo  mysqli_num_rows(mysqli_query($con,"select * from user"));
 								?>
@@ -64,10 +64,10 @@ $userid = $_SESSION['userid'];
                     </div>
                     <div class="col-lg-3">
                     	<div class="panel panel-info">
-                        	<div class="panel-heading">
-                            	<h4 class="panel-title">Total Pin Request</h4>
+                        	<div class="panel-heading" style="color:#fff; background-color:#4CC9F0">
+                            	<h4 class="panel-title"  style="font-size:30px">Total Pin Request</h4>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="font-size: 25px">
                             	<?php 
 								echo  mysqli_num_rows(mysqli_query($con,"select * from pin_request"));
 								?>
@@ -76,10 +76,10 @@ $userid = $_SESSION['userid'];
                     </div>
                     <div class="col-lg-3">
                     	<div class="panel panel-success">
-                        	<div class="panel-heading">
-                            	<h4 class="panel-title">Total Pin</h4>
+                        	<div class="panel-heading" style="color:#fff; background-color:#88D18A">
+                            	<h4 class="panel-title"  style="font-size:30px">Total Pin</h4>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="font-size: 25px">
                             	<?php 
 								echo  mysqli_num_rows(mysqli_query($con,"select * from pin_list"));
 								?>
@@ -89,10 +89,10 @@ $userid = $_SESSION['userid'];
                    
                     <div class="col-lg-3">
                     	<div class="panel panel-danger">
-                        	<div class="panel-heading">
-                            	<h4 class="panel-title">Total No of Payout </h4>
+                        	<div class="panel-heading" style="color:#fff; background-color:#DC143C">
+                            	<h4 class="panel-title"  style="font-size:30px">Total No of Payout </h4>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="font-size: 25px">
                             	<?php 
                                 echo  mysqli_num_rows(mysqli_query($con,"select * from income_received"));
 								?>
@@ -101,10 +101,10 @@ $userid = $_SESSION['userid'];
                     </div>
                     <div class="col-lg-3">
                     	<div class="panel panel-danger">
-                        	<div class="panel-heading">
-                            	<h4 class="panel-title">Total Income</h4>
+                        	<div class="panel-heading" style="color:#fff; background-color:#E59500">
+                            	<h4 class="panel-title"  style="font-size:30px">Total Income</h4>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="font-size: 25px">
                             	<?php 
 							        $q = mysqli_query($con,"select * from user");
                                     $r = mysqli_fetch_array($q);

@@ -64,7 +64,7 @@ echo '<script>alert("Access Denied");window.location.assign("tree.php");</script
 <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" style="background-color: #002642">
 <!-- Navigation -->
 <?php include('php-includes/menu.php'); ?>
 <!-- Page Content -->
@@ -72,7 +72,7 @@ echo '<script>alert("Access Denied");window.location.assign("tree.php");</script
 <div class="container-fluid">
 <div class="row">
 <div class="col-lg-12">
-<h1 class="page-header">Tree</h1>
+<h1 class="page-header" style="font-size:45px">Tree</h1>
 </div>
 <!-- /.col-lg-12 -->
 </div>

@@ -13,14 +13,15 @@ if(isset($_GET['join_user'])){
 	$mobile = mysqli_real_escape_string($con,$_GET['mobile']);
 	$address = mysqli_real_escape_string($con,$_GET['address']);
 	$account = mysqli_real_escape_string($con,$_GET['account']);
-	$under_userid = mysqli_real_escape_string($con,$_GET['under_userid']);
+	$under_userid = $userid;
+	$name=  mysqli_real_escape_string($con,$_GET['name']);
 	$side = mysqli_real_escape_string($con,$_GET['side']);
 	$amount = mysqli_real_escape_string($con,$_GET['amount']);
 	$password = "12345678";
 	  
 	$flag = 0;
 	
-	if($pin!='' && $email!='' && $mobile!='' && $address!='' && $account!='' && $under_userid!='' && $side!='' && $amount!=''){
+	if($pin!='' && $email!='' && $mobile!='' && $address!='' && $account!='' && $under_userid!='' && $side!='' && $amount!='' && $name!=''){
 		//User filled all the fields.
 		if(pin_check($pin)){
 			//Pin is ok
@@ -62,7 +63,7 @@ if(isset($_GET['join_user'])){
 	if($flag==1){
 		
 		//Insert into User profile
-		$query = mysqli_query($con,"insert into user(`email`,`password`,`mobile`,`address`,`account`,`under_userid`,`amount`,`side`) values('$email','$password','$mobile','$address','$account','$under_userid','$amount','$side')");
+		$query = mysqli_query($con,"insert into user(`email`,`name`,`password`,`mobile`,`address`,`account`,`under_userid`,`amount`,`side`) values('$email','$name','$password','$mobile','$address','$account','$under_userid','$amount','$side')");
 		
 		//Insert into Tree
 		//So that later on we can view tree.
@@ -229,8 +230,7 @@ if(isset($_GET['join_user'])){
 		
 		echo mysqli_error($con);
 		
-		echo $temp_amount;
-		echo $under_userid;
+		echo '<script>alert("User joined successfully");</script>';
 	}
 	
 	
@@ -343,7 +343,7 @@ function getUnderIdPlace($userid){
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" style="background-color: #002642">
 
         <!-- Navigation -->
         <?php include('php-includes/menu.php'); ?>
@@ -353,7 +353,7 @@ function getUnderIdPlace($userid){
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Join</h1>
+                        <h1 class="page-header" style="font-size:45px">Join</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -361,36 +361,41 @@ function getUnderIdPlace($userid){
                 <div class="row">
                 	<div class="col-lg-4">
                     	<form method="get">
-                            <div class="form-group">
+						<div class="form-group" style="font-size: 20px">
+                                <label>Under Userid</label><br />
+                              <b>  <?php echo  $userid; ?></b>
+                            </div>
+                            <div class="form-group" style="font-size:15px">
                                 <label>Pin</label>
                                 <input type="text" name="pin" class="form-control" required>
                             </div>
-                            <div class="form-group">
+							<div class="form-group" style="font-size:15px">
+                                <label>Name</label>
+                                <input type="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group" style="font-size:15px">
                                 <label>Email</label>
                                 <input type="email" name="email" class="form-control" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="font-size:15px">
                                 <label>Mobile</label>
                                 <input type="text" name="mobile" class="form-control" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="font-size:15px">
                                 <label>Address</label>
                                 <input type="text" name="address" class="form-control" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="font-size:15px">
                                 <label>Account</label>
                                 <input type="text" name="account" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label>Under Userid</label>
-                                <input type="text" name="under_userid" class="form-control" required>
-                            </div>
-							<div class="form-group">
+                            
+							<div class="form-group" style="font-size:15px">
                                 <label>Amount</label>
                                 <input type="text" name="amount" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label>Side</label><br>
+                            <div class="form-group" style="font-size:15px">
+                                <label>User Number</label><br>
 								<!--before change
                                 <input type="radio" name="side" value="left"> Left
                                 <input type="radio" name="side" value="right"> Right
@@ -407,7 +412,7 @@ function getUnderIdPlace($userid){
                                 <input type="radio" name="side" value="tenth"> User10
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group" style="font-size:15pxpx">
                         	<input type="submit" name="join_user" class="btn btn-primary" value="Join">
 							</div>
                         </form>

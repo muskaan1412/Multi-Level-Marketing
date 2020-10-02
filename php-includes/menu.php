@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<div id="wrapper" style="background-color: #002642; ">
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0 ; background-color: #002642">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -6,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="home.php" style="font-size:30px; color:#fff ">Cleanalya</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -18,10 +19,10 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-message">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> <?php echo ' '. $userid  ?> </a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
+                        <!--<li><a href="userprofile.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>-->
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -31,27 +32,51 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
+         <!--<div style="background-color: #002462"> -->
+            <div class="navbar-default sidebar" role="navigation" style="background-color: #002642">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="home.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="home.php" style="font-size:20px; color:#fff" >
+                            <style type="text/css">
+                            .sidebar ul li a.active {background-color: #000080;}
+                            .sidebar ul li a:hover {background-color: #000080;}
+                            </style><i class="fa fa-dashboard fa-fw" style="font-size:20px; "></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="pin-request.php"><i class="fa fa-adjust fa-fw"></i> Pin Request</a>
+                            <a href="pin-request.php" style="font-size:20px ;color:#fff" >  
+                            <style type="text/css">
+                            .sidebar ul li a.active {background-color: #000080;}
+                            .sidebar ul li a:hover {background-color: #000080;}
+                            </style><i class="fa fa-adjust fa-fw" style="font-size:20px" ></i> Pin Request</a>
                         </li>
                         <li>
-                            <a href="pin.php"><i class="fa fa-adjust fa-fw"></i> View Pin</a>
+                            <a href="pin.php"  style="font-size:20px ;color:#fff">  
+                            <style type="text/css">
+                            .sidebar ul li a.active {background-color: #000080;}
+                            .sidebar ul li a:hover {background-color: #000080;}
+                            </style><i class="fa fa-adjust fa-fw" style="font-size:20px" ></i> View Pin</a>
                         </li>
                         <li>
-                            <a href="join.php"><i class="fa fa-adjust fa-fw"></i> Join User</a>
+                            <a href="join.php"  style="font-size:20px ;color:#fff">  
+                            <style type="text/css">
+                            .sidebar ul li a.active {background-color: #000080;}
+                            .sidebar ul li a:hover {background-color: #000080;}
+                            </style><i class="fa fa-adjust fa-fw" style="font-size:20px" ></i> Join User</a>
                         </li>
                         <li>
-                            <a href="tree.php"><i class="fa fa-adjust fa-hub"></i> Tree</a>
+                            <a href="tree.php"  style="font-size:20px ;color:#fff"> 
+                             <style type="text/css">
+                            .sidebar ul li a.active {background-color: #000080;}
+                            .sidebar ul li a:hover {background-color: #000080;}
+                            </style><i class="fa fa-adjust fa-hub" style="font-size:20px" ></i> Tree</a>
                         </li>
 						<li>
-                            <a href="payment-received-history.php"><i class="fa fa-adjust fa-hub"></i> Payment Received History</a>
+                            <a href="payment-received-history.php"  style="font-size:20px ;color:#fff"  >
+                              <style type="text/css">
+                            .sidebar ul li a.active {background-color: #000080;}
+                            .sidebar ul li a:hover {background-color: #000080;}
+                            </style><i class="fa fa-adjust fa-hub" style="font-size:20px" ></i> Payment Received History</a>
                         </li>
 
                     </ul>
@@ -59,4 +84,6 @@
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
+       
         </nav>
+        </div>

@@ -58,17 +58,17 @@ if(isset($_GET['pin_request'])){
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" style="background-color: #002642">
 
         <!-- Navigation -->
-        <?php include('php-includes/menu.php'); ?>
+        <?php include('php-includes/menu1.php'); ?>
 
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Pin Request</h1>
+                        <h1 class="page-header" style="font-size:45px">Pin Request</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -81,7 +81,7 @@ if(isset($_GET['pin_request'])){
                                 <input type="text" name="amount" class="form-control" required>
                             </div>-->
                             <div class="form-group">
-                            	<input type="submit" name="pin_request" class="btn btn-primary" value="Pin Request">
+                            	<input type="submit" name="pin_request" class="btn btn-primary" value="Pin Request" style="font-size:20px">
                             </div>
                         </form>
                     </div>
@@ -89,12 +89,13 @@ if(isset($_GET['pin_request'])){
                 <div class="row">
                 	<div class="col-lg-6">
                     	<br><br>
-                    	<table class="table table-bordered table-striped">
+                    	<table class="table table-bordered table-striped" style="font-size:20px">
                         	<tr>
                             	<th>S.No.</th>
                                 <!--<th>Amount</th>-->
                                 <th>Date</th>
                                 <th>Status</th>
+                              
                             </tr>
                             <?php 
 							$i=1;
