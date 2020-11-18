@@ -6700,7 +6700,7 @@ button.bg-dark:focus {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 100px) {
   .d-lg-none {
     display: none !important;
   }

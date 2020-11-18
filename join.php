@@ -74,7 +74,9 @@ if(isset($_GET['join_user'])){
 		
 		//Update pin status to close
 		$query = mysqli_query($con,"update pin_list set status='close' where pin='$pin'");
-		
+
+		// echo date("dS - F", strtotime("3 days"));
+
 		//Inset into Icome
 		$query = mysqli_query($con,"insert into income (`userid`) values('$email')");
 		echo mysqli_error($con);
@@ -87,6 +89,11 @@ if(isset($_GET['join_user'])){
 		$admin_amount = $amount;
 		$query = mysqli_query($con,"update user set amount='0' where email= '$email' ");
 		$count = 1;
+
+		//echo date("Y-n-j",strtotime("15 days")); 
+
+
+		
 		
 		while($temp_under_userid!=""){
 			$q = mysqli_query($con,"select * from user where email='$temp_under_userid'");

@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css1/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css1/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -28,20 +28,22 @@
 
 <div class="row justify-content-center">
 
-  <div class="col-xl-10 col-lg-12 col-md-9">
-
-    <div class="card o-hidden border-0 shadow-lg my-5">
+  <div class="col-xl-10 col-lg-12 col-md-9 col-sm-12">
+    <div class="card border-0 shadow-lg my-5">
       <div class="card-body p-0">
       
         <div class="row">
-          <div class="col-lg-6 d-none d-lg-block bg-login-image" style="background-image: url(logo.jpeg)"></div>
-          <div class="col-lg-6">
+          <div class="col-md-6 col-12 d-lg-block bg-login-image"> <img src="logo.jpg" style="display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;"></div>
+          <div class="col-lg-6 col-12">
             <div class="p-5">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4" style="margin-top: 20px ; font-size: 30px"><b>Please Sign In To Cleanalya!</b></h1>
               </div>
               <form method="post" action="login.php">
-                            <fieldset>
+              <fieldset>
                             <div class="form-group" style="margin-top: 20px; ">
                                     <input class="form-control" placeholder="User-Id" name="userid" type="text" autofocus>
                                 </div>
@@ -60,6 +62,38 @@
                         </form>
               </form>
             
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<div class="container" style=" margin-top: 2% ">
+
+
+<div class="row justify-content-center">
+
+  <div class="col-xl-10 col-lg-12 col-md-9 col-sm-12">
+
+    <div class="card border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+      
+        <div class="row" style="background-color: #002642">
+          <!-- <div class="col-lg-6 col-12"> -->
+            <div class="p-5">
+              <!-- <div class="text-center"> -->
+                <ul><h1 class="h4 text-gray-900 mb-4" style="margin-top: 10px; font-size:35px"><b style="color: #fff ">CONTACT DETAILS</b></h1>
+                <li style="color: #fff; font-size: 20px ">Phone Number: +917015737012 ; +918168858453</li>
+                <li  style="color: #fff; font-size: 20px ">Email: cleanalya.ltd@gmail.com</li>
+                </ul>
+</div>
              
             </div>
           </div>
